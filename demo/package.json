@@ -5,7 +5,11 @@
   "license": "MIT",
   "dependencies": {
     "gatsby": "^2.15.1",
+    "gatsby-theme-soundcloud-single": "*",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
+  },
+  "scripts": {
+    "develop": "gatsby develop"
   }
 }
