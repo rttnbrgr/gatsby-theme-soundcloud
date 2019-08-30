@@ -1,0 +1,15 @@
+{
+  "name": "gatsby-theme-soundcloud-single",
+  "author": [
+    "Joel Turner",
+    "rttnbrgr"
+  ],
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
+  ],
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
