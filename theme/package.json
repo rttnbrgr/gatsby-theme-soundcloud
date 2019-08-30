@@ -11,5 +11,10 @@
   ],
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "gatsby": "^2.15.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
 }
