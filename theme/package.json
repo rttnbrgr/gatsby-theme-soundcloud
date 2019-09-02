@@ -16,5 +16,18 @@
     "gatsby": "^2.15.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "gatsby": "^2.15.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "scripts": {
+    "develop": "gatsby develop"
+  },
+  "dependencies": {
+    "gatsby-source-filesystem": "^2.1.19",
+    "gatsby-source-soundcloud": "^2.0.6",
+    "gatsby-transformer-yaml": "^2.2.8"
   }
 }
