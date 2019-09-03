@@ -1,8 +1,5 @@
 module.exports = {
   plugins: [
-    {
-      resolve: 'gatsby-theme-soundcloud-single',
-      options: {}
-    }
+      'gatsby-theme-soundcloud-single',
   ]
 }
