@@ -23,7 +23,8 @@
     "react-dom": "^16.9.0"
   },
   "scripts": {
-    "develop": "gatsby develop"
+    "develop": "gatsby develop",
+    "clean": "rm -rf .cache"
   },
   "dependencies": {
     "gatsby-source-filesystem": "^2.1.19",
