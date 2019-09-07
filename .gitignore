@@ -72,3 +72,6 @@ yarn-error.log
 
 # Netlfiy
 .netlify/
+
+# VScode
+.vscode
