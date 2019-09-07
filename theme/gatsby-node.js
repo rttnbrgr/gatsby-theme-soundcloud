@@ -28,25 +28,17 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
-
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
 
-  console.log('result', result);
-  console.log('posts', result);
-
   posts.forEach((post, index) => {
     console.log('post', post);
-    //   // const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    //   // const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
       path: post.node.fields.slug,
       component: songPage,
       context: {
         slug: post.node.fields.slug,
-        //     // previous,
-        //     // next,
       },
     })
   })
@@ -66,17 +58,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-// TEST
-// exports.createPages = () => {
-//   console.log("ITS ALIVE!!!")
-// }
-
-// test query
-// setup template
-// test template as page
-// test graphql query
-// build single page query
-// use in template
-// build single page
-// abstract into template
-// build pages from node
+/**
+ * @DONE
+ test query
+ setup template
+ test template as page
+ test graphql query
+ build single page query
+ use in template
+ build single page
+ abstract into template
+ build pages from node
+ * @TODO
+ */
