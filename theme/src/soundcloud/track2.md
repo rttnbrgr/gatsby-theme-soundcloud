@@ -1,10 +1,6 @@
 ---
-songTitle: Test Title
-artist: Roger
+songTitle: Downtown. Portland
+artist: Lord Rolex
 ---
 
-# American dad
-season 1
-
-## Song 
 https://soundcloud.com/req-1/downtown-portland
