@@ -16,5 +16,18 @@
     "gatsby": "^2.15.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
+  },
+  "dependencies": {
+    "gatsby-remark-embed-soundcloud": "^1.0.0",
+    "gatsby-source-filesystem": "^2.1.21",
+    "gatsby-transformer-remark": "^2.6.21"
+  },
+  "scripts": {
+    "develop": "gatsby develop"
+  },
+  "devDependencies": {
+    "gatsby": "^2.15.7",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }
