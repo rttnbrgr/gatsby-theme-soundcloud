@@ -1,24 +1,54 @@
-import React from "react"
+import React, { useState } from "react"
+import '../styles.css'
 import Embed, { soundCloudRegEx } from '../component/embed';
+
+// Little Debuggers
+const showAlbumArt = true;
+const showEmbed = true;
+const preferEmbedComponent = true;
 
 const SongPageTemplate = props => {
   console.log('the props on the song page', props);
-  const song = props.data.markdownRemark
-  const siteTitle = props.data.site.siteMetadata.title
+  const md = props.data.markdownRemark
+  const { artist, songTitle } = md.frontmatter
+  const [isPlaying, setPlay] = useState(false);
 
   // grabs soundcloud url from html
-  const matched = song.html.match(soundCloudRegEx);
+  const matched = md.html.match(soundCloudRegEx);
 
   return (
-    <div>
-      <h1>Song Page</h1>
-      <h2>Embed Test</h2>
-      <Embed url={matched[0]} size='l' />
-      <h2>{siteTitle}</h2>
-      <pre>
-        {/* {props} */}
-        <section dangerouslySetInnerHTML={{ __html: song.html }} />
-      </pre>
+    <div className="app--wrapper">
+      <div className="avatar--lockup">
+        <figure className="avatar--wrapper">
+          <img src="https://images.unsplash.com/photo-1521587765099-8835e7201186?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="Face" className="avatar" />
+        </figure>
+        <h1>{artist ? artist : 'Artist'}</h1>
+      </div>
+      <div className="section-break" />
+      <h2>{songTitle ? songTitle : 'Song Title'}</h2>
+
+      {showAlbumArt &&
+        /* Album artwork */
+        <>
+          <img src="https://picsum.photos/200" alt="Face" className="album-art" />
+          <button onClick={() => setPlay(!isPlaying)}>
+            <h2>{isPlaying ? 'Pause' : 'Play'}</h2>
+          </button>
+        </>
+      }
+
+      {/* New embed awesomeness */}
+      {showEmbed && preferEmbedComponent &&
+        <Embed url={matched[0]} size='l' />
+      }
+
+      {/* Soundcloud remark */}
+      {showEmbed && !preferEmbedComponent &&
+        <pre>
+          <section dangerouslySetInnerHTML={{ __html: md.html }} />
+        </pre>
+      }
+
     </div>
   )
 }
@@ -34,9 +64,7 @@ export const pageQuery = graphql`
       }
     }
     markdownRemark(fields: {slug: {eq: $slug}}) {
-      id
       html
-      excerpt(pruneLength: 160)
       frontmatter {
         artist
         songTitle
