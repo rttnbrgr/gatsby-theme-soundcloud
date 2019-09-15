@@ -2,7 +2,10 @@ import React, { useState } from "react"
 import '../styles.css'
 import Embed, { soundCloudRegEx } from '../component/embed';
 
+// Little Debuggers
 const showAlbumArt = true;
+const showEmbed = true;
+const preferEmbedComponent = true;
 
 const SongPageTemplate = props => {
   console.log('the props on the song page', props);
@@ -24,8 +27,7 @@ const SongPageTemplate = props => {
       <div className="section-break" />
       <h2>{songTitle ? songTitle : 'Song Title'}</h2>
 
-      {showAlbumArt
-        ?
+      {showAlbumArt &&
         /* Album artwork */
         <>
           <img src="https://picsum.photos/200" alt="Face" className="album-art" />
@@ -33,19 +35,21 @@ const SongPageTemplate = props => {
             <h2>{isPlaying ? 'Pause' : 'Play'}</h2>
           </button>
         </>
-        :
-        <>
-          {/* Embed Componet */}
-          <h2>Embed Test</h2>
-          <Embed url={matched[0]} size='l' />
-          {/* Remark plugin embed */}
-          < pre >
-            <section dangerouslySetInnerHTML={{ __html: md.html }} />
-          </pre>
-        </>
       }
 
-    </div>
+      {showEmbed
+        &&
+        (preferEmbedComponent
+          ?
+          <Embed url={matched[0]} size='l' />
+          :
+          <pre>
+            <section dangerouslySetInnerHTML={{ __html: md.html }} />
+          </pre>
+        )
+      }
+
+    </div >
   )
 }
 
