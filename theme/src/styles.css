@@ -28,7 +28,7 @@ h3 {
 
 .app--wrapper {
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2rem 2rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -73,6 +73,7 @@ h3 {
 .album-art {
   width: 100%;
   border-radius: 12px;
+  max-width: 500px;
 }
 
 button {
