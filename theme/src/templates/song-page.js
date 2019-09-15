@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import '../styles.css'
+import Embed, { soundCloudRegEx } from '../component/embed';
 
 const showAlbumArt = true;
 
@@ -8,6 +9,9 @@ const SongPageTemplate = props => {
   const md = props.data.markdownRemark
   const { artist, songTitle } = md.frontmatter
   const [isPlaying, setPlay] = useState(false);
+
+  // grabs soundcloud url from html
+  const matched = md.html.match(soundCloudRegEx);
 
   return (
     <div className="app--wrapper">
@@ -30,10 +34,15 @@ const SongPageTemplate = props => {
           </button>
         </>
         :
-        /* Soundcloud embed */
-        < pre >
-          <section dangerouslySetInnerHTML={{ __html: md.html }} />
-        </pre>
+        <>
+          {/* Embed Componet */}
+          <h2>Embed Test</h2>
+          <Embed url={matched[0]} size='l' />
+          {/* Remark plugin embed */}
+          < pre >
+            <section dangerouslySetInnerHTML={{ __html: md.html }} />
+          </pre>
+        </>
       }
 
     </div>
