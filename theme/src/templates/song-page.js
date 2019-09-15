@@ -37,19 +37,19 @@ const SongPageTemplate = props => {
         </>
       }
 
-      {showEmbed
-        &&
-        (preferEmbedComponent
-          ?
-          <Embed url={matched[0]} size='l' />
-          :
-          <pre>
-            <section dangerouslySetInnerHTML={{ __html: md.html }} />
-          </pre>
-        )
+      {/* New embed awesomeness */}
+      {showEmbed && preferEmbedComponent &&
+        <Embed url={matched[0]} size='l' />
       }
 
-    </div >
+      {/* Soundcloud remark */}
+      {showEmbed && !preferEmbedComponent &&
+        <pre>
+          <section dangerouslySetInnerHTML={{ __html: md.html }} />
+        </pre>
+      }
+
+    </div>
   )
 }
 
