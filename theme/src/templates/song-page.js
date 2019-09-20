@@ -7,6 +7,12 @@ const showAlbumArt = true;
 const showEmbed = true;
 const preferEmbedComponent = true;
 
+const sampleConfig = {
+  artist: 'Lord Rolex',
+  songTitle: 'Downtown. Portland',
+  soundcloudUrl: 'https://soundcloud.com/req-1/downtown-portland'
+}
+
 const SongPageTemplate = props => {
   console.log('the props on the song page', props);
   const md = props.data.markdownRemark
