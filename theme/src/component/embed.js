@@ -1,5 +1,6 @@
 import React from 'react';
 import Iframe from "react-iframe";
+import { isUrlValid } from '../utils'
 
 function Embed({ title, id, height = 320, url, size }) {
 
@@ -33,16 +34,3 @@ function Embed({ title, id, height = 320, url, size }) {
 }
 
 export default Embed;
-
-export const soundCloudRegEx = /\/\/.[^(")|(<)]+/;
-
-export function isUrlValid(url) {
-  var res = url.match(
-    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g
-  );
-  if (res != null) {
-    return true;
-  } else {
-    return false;
-  }
-}

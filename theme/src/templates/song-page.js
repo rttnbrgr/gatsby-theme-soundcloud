@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import '../styles.css'
-import Embed, { soundCloudRegEx } from '../component/embed';
-
+import Embed from '../component/embed';
+import { soundCloudRegEx } from '../utils'
 // Little Debuggers
 const showAlbumArt = true;
 const showEmbed = true;
