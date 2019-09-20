@@ -54,7 +54,7 @@ const SongPageTemplate = props => {
 }
 
 export const pageQuery = graphql`
-  query SongBySlug($slug: String!) {
+  query ($slug: String!) {
     site {
       siteMetadata {
         author
