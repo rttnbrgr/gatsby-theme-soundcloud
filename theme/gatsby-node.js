@@ -42,6 +42,16 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  // build new sample page
+  createPage({
+    path: '/new',
+    component: path.resolve(`./src/templates/song-from-md.js`),
+    context: {
+      slug: posts[posts.length - 1].node.fields.slug,
+    },
+  })
+
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
