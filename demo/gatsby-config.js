@@ -5,10 +5,10 @@ module.exports = {
       options: {
         sampleBool: true,
         soundcloud: {
-          basePath: 'songs',
+          // basePath: 'songs',
           tracks: [
             {
-              path: '/song1',
+              // path: '/song1',
               artist: 'Lord Rolex',
               title: 'Downtown. Portland',
               url: 'https://soundcloud.com/req-1/downtown-portland'

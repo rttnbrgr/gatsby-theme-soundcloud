@@ -1,10 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// const SongFromMarkdownTemplate = path.resolve(`./src/templates/song-from-md.js`)
-// const SongFromConfigTemplate = path.resolve(`./src/templates/song-from-config.js`)
-const TrackTemplate = require.resolve(`./src/templates/song-from-config.js`)
-
 exports.createPages = async ({ graphql, actions }, options) => {
   const { createPage } = actions
 
@@ -13,52 +9,19 @@ exports.createPages = async ({ graphql, actions }, options) => {
   console.log('soundcloud', options.soundcloud);
 
   console.log('===== PATH ======')
-  console.log('SongFromConfigTemplate', TrackTemplate);
-
-  // const result = await graphql(
-  //   `
-  //     {
-  //       allMarkdownRemark {
-  //         edges {
-  //           node {
-  //             fields {
-  //               slug
-  //             }
-  //             frontmatter {
-  //               title
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
-  // )
-
-  // if (result.errors) {
-  //   throw result.errors
-  // }
-
-  // // Create blog posts pages.
-  // const posts = result.data.allMarkdownRemark.edges
+  // console.log('SongFromConfigTemplate', TrackTemplate);
 
   // Get list of Soundcloud configs
-  const tracks = options.soundcloud.tracks;
+  const soundcloud = options.soundcloud;
+  const { tracks, basePath: configBasePath } = soundcloud;
 
-  // posts.forEach((post, index) => {
-  //   console.log('post', post);
+  // Get Template
+  const TrackTemplate = require.resolve(`./src/templates/song-from-config.js`)
 
-  //   createPage({
-  //     path: post.node.fields.slug,
-  //     component: SongFromMarkdownTemplate,
-  //     context: {
-  //       slug: post.node.fields.slug,
-  //     },
-  //   })
-  // })
-
-  // create slugs
+  // Create Slugs
   // feels dirty doing it this way
-  const basePath = options.soundcloud.basePath || "/tracks";
+  const basePath = configBasePath || "/tracks";
+
   // Quick-and-dirty helper to convert strings into URL-friendly slugs.
   const slugify = str => {
     const slug = str
@@ -99,18 +62,6 @@ exports.createPages = async ({ graphql, actions }, options) => {
       }
     }
   })
-
-
-
-  // // build new sample page, from the LAST post
-  // createPage({
-  //   path: '/new',
-  //   component: SongFromConfigTemplate,
-  //   context: {
-  //     slug: posts[posts.length - 1].node.fields.slug,
-  //   },
-  // })
-
 }
 
 // exports.onCreateNode = ({ node, actions, getNode }) => {
