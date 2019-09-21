@@ -5,7 +5,7 @@ module.exports = {
       options: {
         sampleBool: true,
         soundcloud: {
-          // path: 'songs',
+          basePath: 'songs',
           tracks: [
             {
               path: '/song1',
