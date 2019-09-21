@@ -1,10 +1,14 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+const SongFromMarkdownTemplate = path.resolve(`./src/templates/song-from-md.js`)
+const SongFromConfigTemplate = path.resolve(`./src/templates/song-from-config.js`)
+
 exports.createPages = async ({ graphql, actions }) => {
+  console.log('it works!')
   const { createPage } = actions
 
-  const songPage = path.resolve(`./src/templates/song-from-md.js`)
+  // const songPage = path.resolve(`./src/templates/song-from-md.js`)
   const result = await graphql(
     `
       {
@@ -36,17 +40,17 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: post.node.fields.slug,
-      component: songPage,
+      component: SongFromMarkdownTemplate,
       context: {
         slug: post.node.fields.slug,
       },
     })
   })
 
-  // build new sample page
+  // build new sample page, from the LAST post
   createPage({
     path: '/new',
-    component: path.resolve(`./src/templates/song-from-md.js`),
+    component: SongFromConfigTemplate,
     context: {
       slug: posts[posts.length - 1].node.fields.slug,
     },
