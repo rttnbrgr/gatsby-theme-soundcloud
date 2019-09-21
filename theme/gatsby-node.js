@@ -56,11 +56,24 @@ exports.createPages = async ({ graphql, actions }, options) => {
   //   })
   // })
 
+  // create slugs
+  // feels dirty doing it this way
+  const basePath = options.soundcloud.basePath || "/tracks";
+  // Quick-and-dirty helper to convert strings into URL-friendly slugs.
+  const slugify = str => {
+    const slug = str
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)+/g, "")
+    return `/${basePath}/${slug}`.replace(/\/\/+/g, "/")
+  }
+
   // Create pages for each track
   tracks.forEach((track, index) => {
     console.log('track', track);
     createPage({
-      path: `/song/${index + 1}`,
+      // use the path if explicitly provide, otherwise, slugify the title
+      path: slugify(track.path || track.title),
       component: TrackTemplate,
       context: {
         track: {
