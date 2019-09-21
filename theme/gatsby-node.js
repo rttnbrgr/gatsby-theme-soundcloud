@@ -1,73 +1,114 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-const SongFromMarkdownTemplate = path.resolve(`./src/templates/song-from-md.js`)
-const SongFromConfigTemplate = path.resolve(`./src/templates/song-from-config.js`)
+// const SongFromMarkdownTemplate = path.resolve(`./src/templates/song-from-md.js`)
+// const SongFromConfigTemplate = path.resolve(`./src/templates/song-from-config.js`)
+const TrackTemplate = require.resolve(`./src/templates/song-from-config.js`)
 
-exports.createPages = async ({ graphql, actions }) => {
-  console.log('it works!')
+exports.createPages = async ({ graphql, actions }, options) => {
   const { createPage } = actions
 
-  // const songPage = path.resolve(`./src/templates/song-from-md.js`)
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-          }
+  console.log('it works!')
+  console.log('options', options);
+  console.log('soundcloud', options.soundcloud);
+
+  console.log('===== PATH ======')
+  console.log('SongFromConfigTemplate', TrackTemplate);
+
+  // const result = await graphql(
+  //   `
+  //     {
+  //       allMarkdownRemark {
+  //         edges {
+  //           node {
+  //             fields {
+  //               slug
+  //             }
+  //             frontmatter {
+  //               title
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `
+  // )
+
+  // if (result.errors) {
+  //   throw result.errors
+  // }
+
+  // // Create blog posts pages.
+  // const posts = result.data.allMarkdownRemark.edges
+
+  // Get list of Soundcloud configs
+  const tracks = options.soundcloud.tracks;
+
+  // posts.forEach((post, index) => {
+  //   console.log('post', post);
+
+  //   createPage({
+  //     path: post.node.fields.slug,
+  //     component: SongFromMarkdownTemplate,
+  //     context: {
+  //       slug: post.node.fields.slug,
+  //     },
+  //   })
+  // })
+
+  // Create pages for each track
+  tracks.forEach((track, index) => {
+    console.log('track', track);
+    createPage({
+      path: `/song/${index + 1}`,
+      component: TrackTemplate,
+      context: {
+        track: {
+          artist: track.artist,
+          title: track.title,
+          url: track.url
         }
       }
-    `
-  )
-
-  if (result.errors) {
-    throw result.errors
-  }
-
-  // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
-
-  posts.forEach((post, index) => {
-    console.log('post', post);
-
-    createPage({
-      path: post.node.fields.slug,
-      component: SongFromMarkdownTemplate,
-      context: {
-        slug: post.node.fields.slug,
-      },
     })
   })
 
-  // build new sample page, from the LAST post
+  // Create index page for primary track
+  const someCheckForWhatIsPrimary = tracks[0];
   createPage({
-    path: '/new',
-    component: SongFromConfigTemplate,
+    path: '/',
+    component: TrackTemplate,
     context: {
-      slug: posts[posts.length - 1].node.fields.slug,
-    },
+      track: {
+        artist: someCheckForWhatIsPrimary.artist,
+        title: someCheckForWhatIsPrimary.title,
+        url: someCheckForWhatIsPrimary.url
+      }
+    }
   })
 
+
+
+  // // build new sample page, from the LAST post
+  // createPage({
+  //   path: '/new',
+  //   component: SongFromConfigTemplate,
+  //   context: {
+  //     slug: posts[posts.length - 1].node.fields.slug,
+  //   },
+  // })
+
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+// exports.onCreateNode = ({ node, actions, getNode }) => {
+//   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    console.log('value', value)
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-}
+//   if (node.internal.type === `MarkdownRemark`) {
+//     const value = createFilePath({ node, getNode })
+//     console.log('value', value)
+//     createNodeField({
+//       name: `slug`,
+//       node,
+//       value,
+//     })
+//   }
+// }
