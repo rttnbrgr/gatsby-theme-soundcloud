@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import '../styles.css'
+import '../more-styles.css'
 import Embed from '../component/embed';
 import { soundCloudRegEx } from '../utils'
 // Little Debuggers
