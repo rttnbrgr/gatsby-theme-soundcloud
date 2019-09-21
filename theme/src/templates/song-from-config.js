@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import '../styles.css'
 import Embed from '../component/embed';
 import { soundCloudRegEx } from '../utils'
@@ -20,27 +20,6 @@ const SongPageTemplate = props => {
     </div>
   )
 }
-
-// export const pageQuery = graphql`
-//   query ($slug: String!) {
-//     site {
-//       siteMetadata {
-//         author
-//         description
-//         siteUrl
-//         title
-//       }
-//     }
-//     markdownRemark(fields: {slug: {eq: $slug}}) {
-//       html
-//       frontmatter {
-//         artist
-//         songTitle
-//         title
-//       }
-//     }
-//   }
-// `
 
 export const pageQuery = graphql`
   query {

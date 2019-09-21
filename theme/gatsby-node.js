@@ -86,6 +86,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
   })
 
   // Create index page for primary track
+  // Can we check to see if there is already a page at index?
   const someCheckForWhatIsPrimary = tracks[0];
   createPage({
     path: '/',
