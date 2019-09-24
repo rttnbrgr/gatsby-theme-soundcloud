@@ -2,7 +2,7 @@
 // @FIX 
 // Can't get Node to import from another file
 const defaultConfig = {
-  // basePath: '/tracks'
+  basePath: '/tracks',
   tracks: [
     {
       path: 'Custom Path',
@@ -17,18 +17,7 @@ const defaultConfig = {
 exports.createPages = async ({ graphql, actions }, options) => {
   const { createPage } = actions
 
-  console.log('it works!')
-  console.log('options', options);
-  console.log('soundcloud', options.soundcloud);
-
-  console.log('===== PATH ======')
-  // console.log('SongFromConfigTemplate', TrackTemplate);
-
-  // Get options or use default
   const soundcloud = options.soundcloud || defaultConfig;
-  console.log('===== SOUNDCLOUD ======');
-  console.log(soundcloud);
-  // destruct
   const { tracks, basePath: configBasePath } = soundcloud;
 
   // Get Template
@@ -36,7 +25,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
 
   // Create Slugs
   // feels dirty doing it this way
-  const basePath = configBasePath || "/tracks";
+  const basePath = configBasePath || defaultConfig.basePath;
 
   // Quick-and-dirty helper to convert strings into URL-friendly slugs.
   const slugify = str => {
@@ -79,17 +68,3 @@ exports.createPages = async ({ graphql, actions }, options) => {
     }
   })
 }
-
-// exports.onCreateNode = ({ node, actions, getNode }) => {
-//   const { createNodeField } = actions
-
-//   if (node.internal.type === `MarkdownRemark`) {
-//     const value = createFilePath({ node, getNode })
-//     console.log('value', value)
-//     createNodeField({
-//       name: `slug`,
-//       node,
-//       value,
-//     })
-//   }
-// }
