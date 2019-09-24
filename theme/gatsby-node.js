@@ -1,5 +1,18 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+// Set defualt config
+// @FIX 
+// Can't get Node to import from another file
+const defaultConfig = {
+  // basePath: '/tracks'
+  tracks: [
+    {
+      path: 'Custom Path',
+      artist: 'Lord Rolex',
+      title: 'Downtown. Portland',
+      url: 'https://soundcloud.com/req-1/downtown-portland'
+    }
+  ]
+}
+
 
 exports.createPages = async ({ graphql, actions }, options) => {
   const { createPage } = actions
@@ -11,8 +24,11 @@ exports.createPages = async ({ graphql, actions }, options) => {
   console.log('===== PATH ======')
   // console.log('SongFromConfigTemplate', TrackTemplate);
 
-  // Get list of Soundcloud configs
-  const soundcloud = options.soundcloud;
+  // Get options or use default
+  const soundcloud = options.soundcloud || defaultConfig;
+  console.log('===== SOUNDCLOUD ======');
+  console.log(soundcloud);
+  // destruct
   const { tracks, basePath: configBasePath } = soundcloud;
 
   // Get Template
