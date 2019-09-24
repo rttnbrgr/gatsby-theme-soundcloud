@@ -21,7 +21,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
   const { tracks, basePath: configBasePath } = soundcloud;
 
   // Get Template
-  const TrackTemplate = require.resolve(`./src/templates/song-from-config.js`)
+  const TrackTemplate = require.resolve(`./src/templates/soundcloudTrack.js`)
 
   // Create Slugs
   // feels dirty doing it this way
