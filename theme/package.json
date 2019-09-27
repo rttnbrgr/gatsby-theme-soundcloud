@@ -1,15 +1,13 @@
 {
-  "name": "gatsby-theme-soundcloud-single",
-  "author": [
-    "Joel Turner",
-    "rttnbrgr"
-  ],
+  "name": "@rttnbrgr/gatsby-theme-soundcloud",
+  "author": "rttnbrgr",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
-    "gatsby-theme"
+    "gatsby-theme",
+    "soundcloud"
   ],
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -21,7 +19,8 @@
     "react-iframe": "^1.8.0"
   },
   "scripts": {
-    "develop": "gatsby develop"
+    "develop": "gatsby develop",
+    "publish": "npm publish --access public"
   },
   "devDependencies": {
     "gatsby": "^2.15.7",
