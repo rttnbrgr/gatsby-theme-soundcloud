@@ -2,7 +2,19 @@
 
 Get a homepage for your song!
 
-This is a pretty simple plugin to get a page for your soundcloud song. It uses the config object to programatically build pages. 
+This is a pretty simple plugin to get a page for your soundcloud song. It uses the config object to programatically build pages. These pages will be at the sluggified title, i.e, title `Places + Faces` will be at route `{basePath}/places-faces`.
+
+## Install
+
+```bash
+yarn add @rttnbrgr/gatsby-theme-soundcloud
+```
+
+or
+
+```bash
+npm i @rttnbrgr/gatsby-theme-soundcloud
+```
 
 ## Config Options
 
@@ -21,8 +33,8 @@ module.exports = {
           // an array of track objects
           tracks: [
             {
-              artist: 'Amine' // name of the artist
-              title:  'Places + Faces' // name of the track
+              artist: 'Amine', // name of the artist
+              title:  'Places + Faces', // name of the track
               url:    'https://soundcloud.com/heyamine/places-faces' // link to soundcloud track page
             }
             ...
