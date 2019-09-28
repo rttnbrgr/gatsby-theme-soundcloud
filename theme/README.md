@@ -22,8 +22,8 @@ module.exports = {
           tracks: [
             {
               artist: 'Amine' // name of the artist
-              title:  '' // name of the track
-              url:    '' // link to soundcloud track page
+              title:  'Places + Faces' // name of the track
+              url:    'https://soundcloud.com/heyamine/places-faces' // link to soundcloud track page
             }
             ...
           ]
@@ -39,21 +39,6 @@ This is the shitty first draft of an idea I have had for a while.
 I've got some ideas for what this could turn into, but nothing solid.
 
 Bug me on twitter if you have thoughts or file an issue.
-
-<!-- ## Simple Walk through
-a) If you don't have gatsby installed, 
-install the hello world starter
-
-b) install the theme
-
-c) edit config
-
-d) run the dev server
-
-e) deploy to netlify
-
-f) watch your streams come in -->
-
 
 ## Live demo
 Check out the demo on [codesandbox](https://codesandbox.io/s/github/rttnbrgr/gatsby-theme-soundcloud-single/tree/RC-shitty-first-draft/demo)
