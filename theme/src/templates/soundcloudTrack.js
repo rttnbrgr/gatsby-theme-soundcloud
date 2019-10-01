@@ -31,6 +31,18 @@ export const pageQuery = graphql`
         title
       }
     }
+    sitePlugin(name: {eq: "@rttnbrgr/gatsby-theme-soundcloud"}) {
+      id
+      pluginOptions {
+        soundcloud {
+          tracks {
+            title
+            url
+          }
+          basePath
+        }
+      }
+    }
   }
 `
 
