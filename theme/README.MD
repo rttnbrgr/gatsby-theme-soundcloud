@@ -41,4 +41,4 @@ I've got some ideas for what this could turn into, but nothing solid.
 Bug me on twitter if you have thoughts or file an issue.
 
 ## Live demo
-Check out the demo on [codesandbox](https://codesandbox.io/s/github/rttnbrgr/gatsby-theme-soundcloud-single/tree/RC-shitty-first-draft/demo)
+Check out the demo on [codesandbox](https://codesandbox.io/s/github/rttnbrgr/gatsby-theme-soundcloud/tree/master/demo)
