@@ -20,7 +20,7 @@ npm i @rttnbrgr/gatsby-theme-soundcloud
 
 Setup the plugin in `gatsby-config.js` with the rest of your plugins.
 
-```gatsby-config.js
+```js:title=gatsby-config.js
 module.exports = {
   plugins: [
     {
